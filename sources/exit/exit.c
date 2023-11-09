@@ -17,3 +17,9 @@ void	close_window(t_data *data, int code)
 	free_data(data);
 	exit(code);
 }
+
+int	exit_game(t_data *data)
+{
+	close_window(data, 0);
+	return (0);
+}

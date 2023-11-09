@@ -4,7 +4,6 @@
 /* -- LIBRARY -- */
 #include "../mlx/mlx.h"
 #include "../libft/libft.h"
-//#include "colors.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -176,5 +175,6 @@ void 	print_lvl(t_data *data);
 /* Gestion de la window */
 void	init_mlx(t_data *data);
 void	close_window(t_data *data, int code);
+int		exit_game(t_data *data);
 
 #endif

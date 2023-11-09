@@ -42,5 +42,5 @@ void	events_key(t_data *data)
 {
 	mlx_hook(data->win, 2, 1L << 0, check_key, data);
 	mlx_hook(data->win, 2, 1L << 0, init_move, data);
-	//mlx_hook(data->win, 17, 1L << 0, close_window, cube);
+	mlx_hook(data->win, 17, 1L << 0, exit_game, data);
 }
