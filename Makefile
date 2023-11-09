@@ -19,6 +19,10 @@ SRCS		= 	main.c \
 				init/init_player_dir.c init/init_struct.c init/init_textures.c \
 				init/init_mlx.c \
 				exit/errors.c exit/exit.c exit/free.c \
+				events/checker_move.c events/event_player.c events/events_key.c \
+				events/player_rot.c \
+				render/draw_map.c render/raycasting.c render/render.c \
+				render/tex_management.c \
 
 SRC_DIR 	= 	$(addprefix sources/, $(SRCS))
 #--------------------------	VARIABLES -----------------------------------------#

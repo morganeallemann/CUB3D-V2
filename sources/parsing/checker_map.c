@@ -24,7 +24,6 @@ int checker_side(t_data *data, char **map)
 	j = 0;
 	if (checker_start_end(map, 0, 0) != 0)
 		return (1);
-	printf("coucou\n");
 	while (i < data->map_set.height - 1)
 	{
 		j = ft_strlen(map[i]) - 1;

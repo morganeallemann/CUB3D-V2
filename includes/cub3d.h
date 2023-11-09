@@ -20,6 +20,18 @@
 /* Résolution des textures */
 #define TXT_SIZE 64
 
+/* Touches clavier */
+# define L_KEY 123
+# define R_KEY 124
+# define D_KEY 125
+# define U_KEY 126
+# define KEY_W 13
+# define KEY_S 1
+# define KEY_A 0
+# define KEY_D 2
+# define KEY_M 46
+# define KEY_ESC 53
+
 /* -- STRCUTURES -- */
 enum e_map_dir
 {
@@ -129,6 +141,9 @@ void    init_struct(t_data *data);
 void	init_tex_data(t_textures *textures);
 void    init_player_dir(t_data *data);
 void	init_tex(t_data *data);
+void	init_ray(t_ray *ray);
+void    init_tex_pxl(t_data *data);
+void	init_img(t_img *img);
 
 /* Parsing */
 int		parse(t_data *data, char **av);
@@ -138,6 +153,19 @@ int 	get_tex_color(t_textures *textures, char *line, int j);
 int 	checker_map(t_data *data, char **map);
 int  	create_map(t_data *data, char **map, int i);
 int 	checker_textures(t_textures *textures);
+
+/* Gestion des mouvements */
+void	events_key(t_data *data);
+int		event_player(t_data *data);
+int		player_rot(t_data *data, double rot);
+int		checker_move(t_data *data, double x, double y);
+
+/* Gestion de la partie grapgique */
+void	render(t_data *data);
+void	raycasting(t_data *data, t_player *player);
+void	update_tex_pxl(t_ray *ray, t_data *data, t_textures *txt, int i);
+void	draw_map(t_data *data);
+
 /* Gestion d'erreurs */
 int		err_msg(char *str, int error);
 void	p_err(char *str);

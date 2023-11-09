@@ -18,13 +18,36 @@ void	init_tex_data(t_textures *textures)
 	textures->conv_floor = 0;
 }
 
+void	init_tex_pxl(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	if (data->tex_pxl)
+		free_tab((void **)data->tex_pxl);
+	data->tex_pxl = ft_calloc(data->w_height + 1, sizeof * data->tex_pxl);
+	if (!data->tex_pxl)
+	{
+		err_msg("Malloc allocation failed", 1);
+		close_window(data, 1);
+	}
+	while (i < data->w_height)
+	{
+		data->tex_pxl[i] = ft_calloc(data->w_width + 1, sizeof * data->tex_pxl[i]);
+		if (!data->tex_pxl[i])
+		{
+			err_msg("Malloc allocation failed", 1);
+			close_window(data, 1);
+		}
+		i++;
+	}
+	return ;
+}
+
 t_img	*load_xpm(t_data *data, char *path)
 {
 	t_img	*img;
 
-	printf("PATH:%s", path);
-	printf("\n");
-	printf("coucou");
 	img = malloc(sizeof(t_img));
 	if (!img)
 	{
@@ -40,6 +63,7 @@ t_img	*load_xpm(t_data *data, char *path)
 	img->address = mlx_get_data_addr(img->img, &img->bpp, &img->line_length, &img->endian);
 	return (img);
 }
+
 void	init_tex(t_data *data)
 {
 	data->tex = malloc(sizeof(t_img *) * 5);
