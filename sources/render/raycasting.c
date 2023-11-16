@@ -33,7 +33,7 @@ void	init_step(t_ray *ray, t_player *player)
 	else
 	{
 		ray->step_y = 1;
-		ray->side_y = (ray->map_y + 1.0) * ray->delta_y;
+		ray->side_y = (ray->map_y + 1.0 - player->pos_y) * ray->delta_y;
 	}
 	return ;
 }
@@ -57,7 +57,7 @@ void	dda(t_ray *ray, t_data *data)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (data->lvl[ray->map_x][ray->map_y > 0])
+		if (data->lvl[ray->map_x][ray->map_y] > '0')
 			hit = 1;
 	}
 	return ;

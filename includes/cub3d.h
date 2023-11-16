@@ -160,7 +160,8 @@ int		player_rot(t_data *data, double rot);
 int		checker_move(t_data *data, double x, double y);
 
 /* Gestion de la partie grapgique */
-void	render(t_data *data);
+int		render(t_data *data);
+void	render_images(t_data *data);
 void	raycasting(t_data *data, t_player *player);
 void	update_tex_pxl(t_ray *ray, t_data *data, t_textures *txt, int i);
 void	draw_map(t_data *data);

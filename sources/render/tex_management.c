@@ -19,14 +19,14 @@ void	tex_type(t_ray *ray, t_data *data)
 	return ;
 }
 
-int	get_color_pxl(t_data *data, t_img *img, int x, int y)
+int	get_color_pxl(t_img *img, int x, int y)
 {
 	int	pos;
 	int	color;
 
-	if (x < 0 || x >= data->textures.size || y < 0 || y >= data->textures.size)
+	if (x < 0 || x >= img->img_w || y < 0 || y >= img->img_h)
 		return (0);
-	pos = (y * data->textures.size + x * (img->bpp / 8));
+	pos = (y * img->line_length + x * (img->bpp / 8));
 	color = *(unsigned int *)(img->address + pos);
 	return (color);
 }
@@ -39,7 +39,7 @@ void	update_tex_pxl(t_ray *ray, t_data *data, t_textures *tex, int i)
 	j = 0;
 	color = 0;
 	tex_type(ray, data);
-	tex->x = (int)tex->size * ray->wall;
+	tex->x = (int)(tex->size * ray->wall);
 	if ((ray->side == 0 && ray->dir_x < 0) || (ray->side == 1 && ray->dir_y > 0))
 		tex->x = tex->size - tex->x - 1;
 	tex->step = 1.0 * tex->size / ray->line_h;
@@ -47,9 +47,9 @@ void	update_tex_pxl(t_ray *ray, t_data *data, t_textures *tex, int i)
 	j = ray->start_draw;
 	while (j < ray->end_draw)
 	{
-		tex->y = (int)tex->pos;
+		tex->y = (int)tex->pos & (tex->size - 1);
 		tex->pos += tex->step;
-		color = get_color_pxl(data, data->tex[tex->type], tex->x, tex->y);
+		color = get_color_pxl(data->tex[tex->type], tex->x, tex->y);
 		if (tex->type == NO || tex->type == EA)
 			color = (color >> 1) & 8355711;
 		if (color > 0)

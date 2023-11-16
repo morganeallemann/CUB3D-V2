@@ -6,8 +6,8 @@ int	move_up(t_data *data, double speed)
 	double	new_pos_y;
 	int		check_move;
 
-	new_pos_x = data->player.pos_x + data->player.dir * speed;
-	new_pos_y = data->player.pos_y + data->player.dir_x * speed;
+	new_pos_x = data->player.pos_x + data->player.dir_x * speed;
+	new_pos_y = data->player.pos_y + data->player.dir_y * speed;
 	check_move = checker_move(data, new_pos_x, new_pos_y);
 	return (check_move);	
 }
@@ -18,8 +18,8 @@ int	move_down(t_data *data, double speed)
 	double	new_pos_y;
 	int		check_move;
 
-	new_pos_x = data->player.pos_x - data->player.dir * speed;
-	new_pos_y = data->player.pos_y - data->player.dir * speed;
+	new_pos_x = data->player.pos_x - data->player.dir_x * speed;
+	new_pos_y = data->player.pos_y - data->player.dir_y * speed;
 	check_move = checker_move(data, new_pos_x, new_pos_y);
 	return (check_move);	
 }
@@ -55,6 +55,8 @@ int	event_player(t_data *data)
 
 	step = 0;
 	speed = 0.15;
+	printf("MOVEX: %d\n", data->player.move_x);
+	printf("MOVEY: %d\n", data->player.move_y);
 	if (data->player.move_x == 1)
 		step += move_right(data, speed);
 	if (data->player.move_x == -1)
@@ -65,5 +67,6 @@ int	event_player(t_data *data)
 		step += move_up(data, speed);
 	if (data->player.rotation != 0)
 		step += player_rot(data, data->player.rotation);
+	printf("STEP: %d\n", step);
 	return (step);
 }
