@@ -26,7 +26,7 @@ void	draw_map(t_data *data)
 
 	i = 0;
 	init_img(&img);
-	img.img = mlx_new_image(data->mlx, data->w_height, data->w_height);
+	img.img = mlx_new_image(data->mlx, data->w_width, data->w_height);
 	if (img.img == NULL)
 	{
 		err_msg("MLX init failed", 1);
