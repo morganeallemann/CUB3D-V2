@@ -37,12 +37,12 @@ int	checker_move(t_data *data, double x, double y)
 	checker = 0;
 	if (check_pos(data, x, data->player.pos_y) == 0)
 	{
-		checker = 1;
+		checker++;
 		data->player.pos_x = x;
 	}
 	if (check_pos(data, data->player.pos_x, y) == 0)
 	{
-		checker = 1;
+		checker++;
 		data->player.pos_y = y;
 	}
 	return (checker);

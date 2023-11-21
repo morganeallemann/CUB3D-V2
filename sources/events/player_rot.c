@@ -17,11 +17,11 @@ int	rotation(t_data *data, double speed_r)
 
 int	player_rot(t_data *data, double rot)
 {
-	int	move;
-	int	speed_r;
+	int		move;
+	double	speed_r;
 
 	move = 0;
-	speed_r = 0.15 * rot;
+	speed_r = 0.1 * rot;
 	move += rotation(data, speed_r);
 	return (move);
 }
