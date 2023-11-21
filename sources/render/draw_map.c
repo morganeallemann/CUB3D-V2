@@ -1,30 +1,30 @@
 #include "../includes/cub3d.h"
 
-void	put_img_pxl(t_img *img, int j, int i, int color)
+void	put_img_pxl(t_img *img, int x, int y, int color)
 {
-	int	pxl;
+	char *pix;
 
-	pxl = i * (img->line_length / 4) + j;
-	img->address[pxl] = color;
+	pix = img->address + (y * img->line_length + x * (img->bpp / 8));
+	*(unsigned int *) pix = color;
 }
 
-void	check_frame(t_data *data, t_img *img, int i, int j)
+void	check_frame(t_data *data, t_img *img, int x, int y)
 {
-	if (data->tex_pxl[i][j] > 0)
-		put_img_pxl(img, j, i, data->tex_pxl[i][j]);
-	else if (i < data->w_height / 2)
-		put_img_pxl(img, j, i, data->textures.conv_ceiling);
-	else if (i < data->w_height -1)
-		put_img_pxl(img, j, i, data->textures.conv_floor);
+	if (data->tex_pxl[y][x] > 0)
+		put_img_pxl(img, x, y, data->tex_pxl[y][x]);
+	else if (y < data->w_height / 2)
+		put_img_pxl(img, x, y, data->textures.conv_ceiling);
+	else if (y < data->w_height -1)
+		put_img_pxl(img, x, y, data->textures.conv_floor);
 }
 
 void	draw_map(t_data *data)
 {
 	t_img	img;
-	int		i;
-	int		j;
+	int		x;
+	int		y;
 
-	i = 0;
+	y = 0;
 	init_img(&img);
 	img.img = mlx_new_image(data->mlx, data->w_width, data->w_height);
 	if (img.img == NULL)
@@ -33,15 +33,15 @@ void	draw_map(t_data *data)
 		close_window(data, 1);
 	}
 	img.address = mlx_get_data_addr(img.img, &img.bpp, &img.line_length, &img.endian);
-	while (i < data->w_height)
+	while (y < data->w_height)
 	{
-		j = 0;
-		while (j < data->w_width)
+		x = 0;
+		while (x < data->w_width)
 		{
-			check_frame(data, &img, i, j);
-			j++;
+			check_frame(data, &img, x, y);
+			x++;
 		}
-		i++;
+		y++;
 	}
 	mlx_put_image_to_window(data->mlx, data->win, img.img, 0, 0);
 	mlx_destroy_image(data->mlx, img.img);

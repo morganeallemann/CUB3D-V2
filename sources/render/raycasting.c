@@ -70,7 +70,7 @@ void	height_ray(t_ray *ray, t_data *data, t_player *player)
 	else
 		ray->wall_dist = (ray->side_y - ray->delta_y);
 	ray->line_h = (int)(data->w_height / ray->wall_dist);
-	ray->start_draw = -(ray->line_h) / 2 + (data->w_height / 2);
+	ray->start_draw = -ray->line_h / 2 + data->w_height / 2;
 	if (ray->start_draw < 0)
 		ray->start_draw = 0;
 	ray->end_draw = (ray->line_h / 2) + (data->w_height / 2);
