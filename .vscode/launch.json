@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/morganeallemann/Documents/CUB3D-V2",
-      "program": "/Users/morganeallemann/Documents/CUB3D-V2/build/Debug/outDebug"
+      "cwd": "/Users/morganeallemann/Documents/CUB3D-V2/sources/render",
+      "program": "/Users/morganeallemann/Documents/CUB3D-V2/sources/render/build/Debug/outDebug"
     }
   ]
 }

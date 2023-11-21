@@ -6,18 +6,26 @@ int	check_wall(t_data *data, double x, double y)
 		return (1);
 	return (0);
 }
+
+/*FONCTION A CORRIGER ELLE LE SECOND IF NE FONCTIONNE PAS !*/
 int	check_map_pos(t_data *data, double x, double y)
 {
 	if (x < 0.25 || x >= data->map_set.width - 1.25)
+	{
+		printf("FALSE\n");
 		return (1);
-	if (y < 0.25 || y >= data->map_set.height -0.25)
+	}
+	if (y < 0.25 || y >= data->map_set.height - 0.25)
+	{
+		printf("FALS\n");
 		return (1);
+	}
 	return (0);
 }
 
 int	check_pos(t_data *data, double x, double y)
 {
-	if (check_map_pos(data, x, y) || check_wall(data, x, y))
+	if (check_wall(data, x, y))
 		return (1);
 	return (0);
 }

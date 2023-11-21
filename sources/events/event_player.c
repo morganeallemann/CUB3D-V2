@@ -55,18 +55,15 @@ int	event_player(t_data *data)
 
 	step = 0;
 	speed = 0.15;
-	printf("MOVEX: %d\n", data->player.move_x);
-	printf("MOVEY: %d\n", data->player.move_y);
 	if (data->player.move_x == 1)
 		step += move_right(data, speed);
 	if (data->player.move_x == -1)
 		step += move_left(data, speed);
 	if (data->player.move_y == 1)
-		step += move_down(data, speed);
-	if (data->player.move_y == -1)
 		step += move_up(data, speed);
+	if (data->player.move_y == -1)
+		step += move_down(data, speed);
 	if (data->player.rotation != 0)
 		step += player_rot(data, data->player.rotation);
-	printf("STEP: %d\n", step);
 	return (step);
 }

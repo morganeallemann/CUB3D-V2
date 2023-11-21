@@ -158,6 +158,7 @@ void	events_key(t_data *data);
 int		event_player(t_data *data);
 int		player_rot(t_data *data, double rot);
 int		checker_move(t_data *data, double x, double y);
+int		init_move(int key, t_data *data);
 
 /* Gestion de la partie grapgique */
 int		render(t_data *data);

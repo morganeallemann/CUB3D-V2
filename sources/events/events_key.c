@@ -3,7 +3,6 @@ void	events_key(t_data *data);
 
 int	check_key(int key, t_data *data)
 {
-	printf("CHECKKEY\n");
 	if (key == KEY_ESC)
 		exit_game(data);
 	if (key == KEY_W)
@@ -44,5 +43,6 @@ void	events_key(t_data *data)
 {
 	mlx_hook(data->win, 2, 1L << 0, check_key, data);
 	mlx_hook(data->win, 3, 1L << 1, init_move, data);
-	mlx_hook(data->win, 33, 0, exit_game, data);	
+	mlx_hook(data->win, 33, 0, exit_game, data);
+	mlx_hook(data->win, 17, 0, exit_game, data);
 }

@@ -18,7 +18,6 @@ void	render_images(t_data *data)
 int	render(t_data *data)
 {
 	data->player.move_on += event_player(data);
-	printf("MOVE: %d\n", data->player.move_on);
 	if (data->player.move_on == 0)
 		return (0);
 	render_images(data);
