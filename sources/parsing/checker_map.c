@@ -26,6 +26,8 @@ int checker_side(t_data *data, char **map)
 		return (1);
 	while (i < data->map_set.height - 1)
 	{
+		if (map[i][0] != '1')
+			return (1);
 		j = ft_strlen(map[i]) - 1;
 		if (map[i][j] != '1')
 			return (1);
@@ -78,7 +80,7 @@ int	checker_player(t_data *data, char **map)
 			{
 				data->player.pos_x = (double)i + 0.5;
 				data->player.pos_y = (double)j + 0.5;
-				flag = 1;
+				flag ++;
 			}
 			j++;
 		}
