@@ -80,6 +80,7 @@ int	checker_player(t_data *data, char **map)
 			{
 				data->player.pos_x = (double)i + 0.5;
 				data->player.pos_y = (double)j + 0.5;
+				map[i][j] = '0';
 				flag ++;
 			}
 			j++;

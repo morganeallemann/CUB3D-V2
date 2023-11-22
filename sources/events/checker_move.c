@@ -11,16 +11,10 @@ int	check_wall(t_data *data, double x, double y)
 int	check_map_pos(t_data *data, double x, double y)
 {
 	if (x < 0.25 || x >= data->map_set.width - 1.25)
-	{
-		printf("FALSE\n");
-		return (0);
-	}
+		return (1);
 	if (y < 0.25 || y >= data->map_set.height - 0.25)
-	{
-		printf("FALS\n");
-		return (0);
-	}
-	return (1);
+		return (1);
+	return (0);
 }
 
 int	check_pos(t_data *data, double x, double y)
