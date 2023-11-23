@@ -26,6 +26,9 @@ int	init_lvl(int ind, t_data *data)
 	int	j;
 
 	i = -1;
+	data->lvl = (char **)malloc(sizeof(char *) * (data->map_set.height + 1));
+	if (!data->lvl)
+		return (err_msg("Malloc allocation failed", 1));
 	while (++i < data->map_set.height)
 	{
 		j = 0;
@@ -95,9 +98,6 @@ int	create_map(t_data *data, char **map, int i)
 	get_dimension(i, data, map);
 	printf("Hauteur de la carte : %d\n", data->map_set.height);
 	printf("Largeur de la carte : %d\n", data->map_set.width);
-	data->lvl = (char **)malloc(sizeof(char *) * data->map_set.height + 1);
-	if (!data->lvl)
-		return (err_msg("Malloc allocation failed", 1));
 	if (init_lvl(i, data) != 0)
 		return (1);
 	convert_empty_to_wall(data);

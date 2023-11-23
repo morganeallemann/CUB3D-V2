@@ -16,6 +16,7 @@ SRCS		= 	main.c \
 				parsing/check_textures.c parsing/checker_map.c \
 				parsing/create_map.c parsing/get_map_info.c \
 				parsing/get_tex_color.c parsing/parse_map.c parsing/parsing.c \
+				parsing/checker_side.c \
 				init/init_player_dir.c init/init_struct.c init/init_textures.c \
 				init/init_mlx.c \
 				exit/errors.c exit/exit.c exit/free.c \
@@ -35,8 +36,8 @@ INCLUDES 	= -Iincludes/
 LIBFT 		= libft/libft.a mlx_mac/libmlx.dylib
 
 CC			= gcc
-CFLAGSDDBUG	= -Wall -Wextra -Werror -g 
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGSDDBUG	= -Wall -Wextra -Werror 
+CFLAGS		= -Wall -Wextra -Werror -g3 
 
 RM			= rm -rf
 

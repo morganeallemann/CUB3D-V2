@@ -48,7 +48,6 @@ void	init_east_west(t_data *data)
 	}
 	return ;
 }
-
 void	init_player_dir(t_data *data)
 {
 	init_north_south(data);

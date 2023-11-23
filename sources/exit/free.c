@@ -31,17 +31,35 @@ void	free_tab(void **tab)
 static void	free_textures(t_textures *textures)
 {
 	if (textures->no)
+	{
 		free(textures->no);
+		textures->no = NULL;
+	}
 	if (textures->so)
+	{
 		free(textures->so);
+		textures->so = NULL;
+	}
 	if (textures->we)
+	{
 		free(textures->we);
+		textures->we = NULL;
+	}
 	if (textures->ea)
+	{
 		free(textures->ea);
+		textures->ea = NULL;
+	}
 	if (textures->floor)
+	{
 		free(textures->floor);
+		textures->floor = NULL;
+	}
 	if (textures->ceiling)
+	{
 		free(textures->ceiling);
+		textures->ceiling = NULL;
+	}
 }
 
 static void	free_map(t_data *data)
