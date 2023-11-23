@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_struct.c	                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malleman <malleman@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/22 15:45:32 by malleman          #+#    #+#             */
+/*   Updated: 2023/11/22 16:07:11 by malleman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "../includes/cub3d.h"
 
 void	init_map(t_map *map)
@@ -57,7 +68,7 @@ void	init_ray(t_ray *ray)
 	ray->step_y = 0;
 }
 
-void    init_struct(t_data *data)
+void	init_struct(t_data *data)
 {
 	data->mlx = NULL;
 	data->win = NULL;

@@ -1,4 +1,15 @@
-#include"../includes/cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malleman <malleman@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/22 15:45:32 by malleman          #+#    #+#             */
+/*   Updated: 2023/11/22 16:07:11 by malleman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+#include "../includes/cub3d.h"
 
 void	init_calc(t_ray *ray, int i, t_player *player)
 {
@@ -7,7 +18,7 @@ void	init_calc(t_ray *ray, int i, t_player *player)
 	ray->dir_x = player->dir_x + player->plan_x * ray->cam; 
 	ray->dir_y = player->dir_y + player->plan_y * ray->cam;
 	ray->delta_x = fabs(1 / ray->dir_x);
-	ray->delta_y = fabs(1/ ray->dir_y);
+	ray->delta_y = fabs(1 / ray->dir_y);
 	ray->map_x = (int)player->pos_x;
 	ray->map_y = (int)player->pos_y;
 	return ;
@@ -17,8 +28,8 @@ void	init_step(t_ray *ray, t_player *player)
 {
 	if (ray->dir_x < 0)
 	{
-	   ray->step_x = -1;
-	   ray->side_x = (player->pos_x - ray->map_x) * ray->delta_x;
+		ray->step_x = -1;
+		ray->side_x = (player->pos_x - ray->map_x) * ray->delta_x;
 	}
 	else
 	{

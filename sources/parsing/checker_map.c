@@ -1,42 +1,15 @@
-#include"../includes/cub3d.h"
-
-int	checker_start_end(char **map, int i, int j)
-{
-	while (map[i][j] == ' ' || map[i][j] == '\t'
-	|| map[i][j] == '\r' || map[i][j] == '\v'
-	|| map[i][j] == '\f')
-		j++;
-	while (map[i][j])
-	{
-		if (map[i][j] != '1')
-			return (1);
-		j++;
-	}
-	return (0);
-}
-
-int checker_side(t_data *data, char **map)
-{
-	int i;
-	int	j;
-
-	i = 1;
-	j = 0;
-	if (checker_start_end(map, 0, 0) != 0)
-		return (1);
-	while (i < data->map_set.height - 1)
-	{
-		if (map[i][0] != '1')
-			return (1);
-		j = ft_strlen(map[i]) - 1;
-		if (map[i][j] != '1')
-			return (1);
-		i++;
-	}
-	if (checker_start_end(map, i, 0) != 0)
-		return (1);
-	return (0);
-}
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker_map.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malleman <malleman@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/22 15:45:32 by malleman          #+#    #+#             */
+/*   Updated: 2023/11/22 16:07:11 by malleman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+#include "../includes/cub3d.h"
 
 int	checker_elem(t_data *data, char **map)
 {
@@ -67,14 +40,14 @@ int	checker_player(t_data *data, char **map)
 	int	j;
 	int	flag;
 
-	i = 0;
+	i = -1;
 	flag = 0;
 	if (data->player.dir == '0')
 		return (1);
-	while (map[i])
+	while (map[++i])
 	{
-		j = 0;
-		while (map[i][j])
+		j = -1;
+		while (map[i][++j])
 		{
 			if (ft_strchr("NSEW", map[i][j]))
 			{
@@ -83,9 +56,7 @@ int	checker_player(t_data *data, char **map)
 				map[i][j] = '0';
 				flag ++;
 			}
-			j++;
 		}
-		i++;
 	}
 	if (!data->player.pos_x || !data->player.pos_y || flag != 1)
 		return (1);
@@ -103,9 +74,12 @@ int	check_order_elem(t_data *data)
 		j = 0;
 		while (data->map_set.map[i][j])
 		{
-			if (data->map_set.map[i][j] != ' ' && data->map_set.map[i][j] != '\t'
-				&& data->map_set.map[i][j] != '\r' && data->map_set.map[i][j] != '\n'
-				&& data->map_set.map[i][j] != '\v' && data->map_set.map[i][j] != '\f')
+			if (data->map_set.map[i][j] != ' '
+				&& data->map_set.map[i][j] != '\t'
+				&& data->map_set.map[i][j] != '\r' 
+				&& data->map_set.map[i][j] != '\n'
+				&& data->map_set.map[i][j] != '\v'
+				&& data->map_set.map[i][j] != '\f')
 				return (1);
 			j++;
 		}
@@ -114,7 +88,7 @@ int	check_order_elem(t_data *data)
 	return (0);
 }
 
-int checker_map(t_data *data, char **map)
+int	checker_map(t_data *data, char **map)
 {
 	if (!data->lvl)
 		return (err_msg("Map missing", 1));

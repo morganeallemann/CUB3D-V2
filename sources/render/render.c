@@ -1,4 +1,15 @@
-#include"../includes/cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render.c	                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malleman <malleman@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/22 15:45:32 by malleman          #+#    #+#             */
+/*   Updated: 2023/11/22 16:07:11 by malleman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+#include "../includes/cub3d.h"
 
 static void	render_raycast(t_data *data)
 {
@@ -11,8 +22,7 @@ static void	render_raycast(t_data *data)
 void	render_images(t_data *data)
 {
 	render_raycast(data);
-	//if (BONUS)
-	//	render_minimap(data);
+	//render_minimap(data);
 }
 
 int	render(t_data *data)

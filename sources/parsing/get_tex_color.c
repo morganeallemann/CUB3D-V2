@@ -1,4 +1,15 @@
-#include"../includes/cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_tex_color.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malleman <malleman@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/22 15:45:32 by malleman          #+#    #+#             */
+/*   Updated: 2023/11/22 16:07:11 by malleman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+#include "../includes/cub3d.h"
 
 int	no_num(char *str)
 {
@@ -58,7 +69,7 @@ int	*get_colors(char *str)
 	return (convert_colors(c_to_convert, colors));
 }
 
-int get_tex_color(t_textures *textures, char *line, int j)
+int	get_tex_color(t_textures *textures, char *line, int j)
 {
 	if (line[j] == 'C' && !ft_isprint(line[j + 1]) && !textures->ceiling)
 	{

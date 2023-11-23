@@ -1,4 +1,15 @@
-#include"../includes/cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_textures.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malleman <malleman@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/22 15:45:32 by malleman          #+#    #+#             */
+/*   Updated: 2023/11/22 16:07:11 by malleman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+#include "../includes/cub3d.h"
 
 int	check_xpm(char *av)
 {
@@ -13,9 +24,9 @@ int	check_xpm(char *av)
 		return (0);
 }
 
-int check_colors(int *colors)
+int	check_colors(int *colors)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 3)
@@ -27,12 +38,12 @@ int check_colors(int *colors)
 	return (0);
 }
 
-unsigned long	conv_colors(int  *colors)
+unsigned long	conv_colors(int *colors)
 {
-	unsigned long   convert;
-	int             r;
-	int             g;
-	int             b;
+	unsigned long	convert;
+	int				r;
+	int				g;
+	int				b;
 
 	r = colors[0];
 	g = colors[1];
@@ -41,13 +52,14 @@ unsigned long	conv_colors(int  *colors)
 	return (convert);
 }
 
-int checker_textures(t_textures *textures)
+int	checker_textures(t_textures *textures)
 {
 	if (!textures->no || !textures->so || !textures->we || !textures->ea)
 		return (err_msg("Init txt failed", 1));
 	if (!textures->ceiling || !textures->floor)
 		return (err_msg("Init colors failed", 1));
-	if (check_xpm(textures->no) || check_xpm(textures->so) || check_xpm(textures->we) || check_xpm(textures->ea))
+	if (check_xpm(textures->no) || check_xpm(textures->so)
+		|| check_xpm(textures->we) || check_xpm(textures->ea))
 		return (err_msg("Textures files is not XPM", 1));
 	if (check_colors(textures->floor) || check_colors(textures->ceiling))
 		return (err_msg("Colors code is wrong", 1));

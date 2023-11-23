@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_move.c	                                    :+:      :+:    :+:   */
+/*   checker_side.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malleman <malleman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,46 +11,40 @@
 /* ************************************************************************** */
 #include "../includes/cub3d.h"
 
-int	check_wall(t_data *data, double x, double y)
+int	checker_start_end(char **map, int i, int j)
 {
-	if (data->lvl[(int)x][(int)y] == '1')
-		return (1);
-	return (0);
-}
-
-/*FONCTION A CORRIGER ELLE LE SECOND IF NE FONCTIONNE PAS !*/
-int	check_map_pos(t_data *data, double x, double y)
-{
-	if (x < 0.25 || x >= data->map_set.width - 1.25)
-		return (1);
-	if (y < 0.25 || y >= data->map_set.height - 0.25)
-		return (1);
-	return (0);
-}
-
-int	check_pos(t_data *data, double x, double y)
-{
-	if (check_wall(data, x, y))
-		return (1);
-	//if (check_map_pos(data, x, y))
-	//	return (1);
-	return (0);
-}
-
-int	checker_move(t_data *data, double x, double y)
-{
-	int	checker;
-
-	checker = 0;
-	if (check_pos(data, x, data->player.pos_y) == 0)
+	while (map[i][j] == ' ' || map[i][j] == '\t'
+	|| map[i][j] == '\r' || map[i][j] == '\v'
+	|| map[i][j] == '\f')
+		j++;
+	while (map[i][j])
 	{
-		checker++;
-		data->player.pos_x = x;
+		if (map[i][j] != '1')
+			return (1);
+		j++;
 	}
-	if (check_pos(data, data->player.pos_x, y) == 0)
+	return (0);
+}
+
+int	checker_side(t_data *data, char **map)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	j = 0;
+	if (checker_start_end(map, 0, 0) != 0)
+		return (1);
+	while (i < data->map_set.height - 1)
 	{
-		checker++;
-		data->player.pos_y = y;
+		if (map[i][0] != '1')
+			return (1);
+		j = ft_strlen(map[i]) - 1;
+		if (map[i][j] != '1')
+			return (1);
+		i++;
 	}
-	return (checker);
+	if (checker_start_end(map, i, 0) != 0)
+		return (1);
+	return (0);
 }

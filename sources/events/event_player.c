@@ -1,4 +1,15 @@
-#include"../includes/cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   event_player.c	                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malleman <malleman@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/22 15:45:32 by malleman          #+#    #+#             */
+/*   Updated: 2023/11/22 16:07:11 by malleman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+#include "../includes/cub3d.h"
 
 int	move_up(t_data *data, double speed)
 {
@@ -9,7 +20,7 @@ int	move_up(t_data *data, double speed)
 	new_pos_x = data->player.pos_x + data->player.dir_x * speed;
 	new_pos_y = data->player.pos_y + data->player.dir_y * speed;
 	check_move = checker_move(data, new_pos_x, new_pos_y);
-	return (check_move);	
+	return (check_move);
 }
 
 int	move_down(t_data *data, double speed)
@@ -21,7 +32,7 @@ int	move_down(t_data *data, double speed)
 	new_pos_x = data->player.pos_x - data->player.dir_x * speed;
 	new_pos_y = data->player.pos_y - data->player.dir_y * speed;
 	check_move = checker_move(data, new_pos_x, new_pos_y);
-	return (check_move);	
+	return (check_move);
 }
 
 int	move_left(t_data *data, double speed)
@@ -33,10 +44,10 @@ int	move_left(t_data *data, double speed)
 	new_pos_x = data->player.pos_x + data->player.dir_y * speed;
 	new_pos_y = data->player.pos_y - data->player.dir_x * speed;
 	check_move = checker_move(data, new_pos_x, new_pos_y);
-	return (check_move);	
+	return (check_move);
 }
 
-int move_right(t_data *data, double speed)
+int	move_right(t_data *data, double speed)
 {
 	double	new_pos_x;
 	double	new_pos_y;

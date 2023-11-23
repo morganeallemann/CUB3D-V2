@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_textures.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malleman <malleman@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/22 15:45:32 by malleman          #+#    #+#             */
+/*   Updated: 2023/11/22 16:07:11 by malleman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "../includes/cub3d.h"
 
 void	init_tex_data(t_textures *textures)
@@ -33,7 +44,8 @@ void	init_tex_pxl(t_data *data)
 	}
 	while (i < data->w_height)
 	{
-		data->tex_pxl[i] = ft_calloc(data->w_width + 1, sizeof * data->tex_pxl[i]);
+		data->tex_pxl[i] = ft_calloc(data->w_width + 1,
+				sizeof * data->tex_pxl[i]);
 		if (!data->tex_pxl[i])
 		{
 			err_msg("Malloc allocation failed", 1);
@@ -60,7 +72,8 @@ t_img	*load_xpm(t_data *data, char *path)
 		free(img);
 		p_err("MLX init ptr failed");
 	}
-	img->address = mlx_get_data_addr(img->img, &img->bpp, &img->line_length, &img->endian);
+	img->address = mlx_get_data_addr(img->img, &img->bpp,
+			&img->line_length, &img->endian);
 	return (img);
 }
 
