@@ -45,6 +45,16 @@ void	init_img(t_img *img)
 	img->endian = 0;
 	img->img_h = 0;
 	img->img_w = 0;
+	img->minimap_img = NULL;
+	img->minimap_addr = NULL;
+	img->minimap_bpp = 0;
+	img->minimap_line_length = 0;
+	img->minimap_endian = 0;
+	img->minimap_w = 0;
+	img->minimap_h = 0;
+	img->minimap_y = 0;
+	img->minimap_x = 0;
+	img->block_size = 0;
 }
 
 void	init_ray(t_ray *ray)

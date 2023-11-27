@@ -3,13 +3,13 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: malleman <malleman@42lausanne.ch>          +#+  +:+       +#+         #
+#    By: inaranjo <inaranjo <inaranjo@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 13:39:48 by malleman          #+#    #+#              #
-#    Updated: 2023/02/15 17:05:37 by malleman         ###   ########.fr        #
+#    Updated: 2023/11/27 14:08:33 by inaranjo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-#--------------------------	SOURCES -------------------------------------------#
+
 SRCS_PATH	=	./sources/
 
 SRCS		= 	main.c \
@@ -23,7 +23,7 @@ SRCS		= 	main.c \
 				events/checker_move.c events/event_player.c events/events_key.c \
 				events/player_rot.c \
 				render/draw_map.c render/raycasting.c render/render.c \
-				render/tex_management.c \
+				render/tex_management.c render/draw_minimap.c \
 
 SRC_DIR 	= 	$(addprefix sources/, $(SRCS))
 #--------------------------	VARIABLES -----------------------------------------#

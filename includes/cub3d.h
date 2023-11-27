@@ -62,6 +62,16 @@ typedef struct s_img
 	int		endian;
 	int		img_h;
 	int		img_w;
+	void	*minimap_img;
+    char	*minimap_addr;
+    int		minimap_bpp;
+    int		minimap_line_length;
+    int		minimap_endian;
+	int		minimap_w;
+	int		minimap_h;
+	int		minimap_y;
+	int		minimap_x;
+	int		block_size;
 }			t_img;
 
 typedef struct s_textures
@@ -179,6 +189,11 @@ void	render_images(t_data *data);
 void	raycasting(t_data *data, t_player *player);
 void	update_tex_pxl(t_ray *ray, t_data *data, t_textures *txt, int i);
 void	draw_map(t_data *data);
+
+/* Gestttion de la mini_map*/
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	draw_minimap(t_data *data);
+void	draw_square(t_data *data, int draw_x, int draw_y, int color);
 
 /* Gestion d'erreurs */
 int		err_msg(char *str, int error);
