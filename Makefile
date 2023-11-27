@@ -6,7 +6,7 @@
 #    By: inaranjo <inaranjo <inaranjo@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 13:39:48 by malleman          #+#    #+#              #
-#    Updated: 2023/11/27 14:08:33 by inaranjo         ###   ########.fr        #
+#    Updated: 2023/11/27 15:10:19 by inaranjo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ LIBFT 		= libft/libft.a mlx_mac/libmlx.dylib
 
 CC			= gcc
 CFLAGSDDBUG	= -Wall -Wextra -Werror 
-CFLAGS		= -Wall -Wextra -Werror -g3 
+CFLAGS		= -Wall -Wextra -Werror -g3 -fsanitize=address
 
 RM			= rm -rf
 
@@ -52,7 +52,7 @@ ${LIBFT}:
 	cd libft/ && make
 
 $(NAME): ${LIBFT} $(OBJS)
-	$(CC) ${CFLAGS} $(OBJS) -L./libft -L. -lmlx -lm -lft -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) ${CFLAGS} $(OBJS) -L./libft -L. -lmlx -lm -lft -framework OpenGL -framework AppKit -o $(NAME) -fsanitize=address
 
 clean:
 	cd libft/ && make clean
