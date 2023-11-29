@@ -28,6 +28,20 @@ void	free_tab(void **tab)
 	}
 }
 
+static void	free_colors(t_textures *textures)
+{
+	if (textures->floor)
+	{
+		free(textures->floor);
+		textures->floor = NULL;
+	}
+	if (textures->ceiling)
+	{
+		free(textures->ceiling);
+		textures->ceiling = NULL;
+	}
+}
+
 static void	free_textures(t_textures *textures)
 {
 	if (textures->no)
@@ -50,16 +64,6 @@ static void	free_textures(t_textures *textures)
 		free(textures->ea);
 		textures->ea = NULL;
 	}
-	if (textures->floor)
-	{
-		free(textures->floor);
-		textures->floor = NULL;
-	}
-	if (textures->ceiling)
-	{
-		free(textures->ceiling);
-		textures->ceiling = NULL;
-	}
 }
 
 static void	free_map(t_data *data)
@@ -79,6 +83,7 @@ int	free_data(t_data *data)
 	if (data->tex_pxl)
 		free_tab((void **)data->tex_pxl);
 	free_textures(&data->textures);
+	free_colors(&data->textures);
 	free_map(data);
 	return (1);
 }

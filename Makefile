@@ -37,7 +37,7 @@ LIBFT 		= libft/libft.a mlx_mac/libmlx.dylib
 
 CC			= gcc
 CFLAGSDDBUG	= -Wall -Wextra -Werror 
-CFLAGS		= -Wall -Wextra -Werror -g3 
+CFLAGS		= -Wall -Wextra -Werror -g3 -fsanitize=address
 
 RM			= rm -rf
 

@@ -26,9 +26,6 @@ int	init_lvl(int ind, t_data *data)
 	int	j;
 
 	i = -1;
-	data->lvl = (char **)malloc(sizeof(char *) * (data->map_set.height + 1));
-	if (!data->lvl)
-		return (err_msg("Malloc allocation failed", 1));
 	while (++i < data->map_set.height)
 	{
 		j = 0;
@@ -61,6 +58,9 @@ void	get_dimension(int map_start_index, t_data *data, char **map)
 	max_width = 0;
 	line_length = 0;
 	i = map_start_index;
+	data->lvl = (char **)malloc(sizeof(char *) * (data->map_set.height + 1));
+	if (!data->lvl)
+		return (err_msg("Malloc allocation failed", 1));
 	while (map[i])
 	{
 		line_length = ft_strlen(map[i]);
