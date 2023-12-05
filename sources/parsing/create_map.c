@@ -26,18 +26,19 @@ int	init_lvl(int ind, t_data *data)
 	int	j;
 
 	i = -1;
+	data->lvl = (char **)malloc(sizeof(char *) * (data->map_set.height + 1));
+	if (!data->lvl)
+		return (err_msg("Malloc allocation failed", 1));
 	while (++i < data->map_set.height)
 	{
-		j = 0;
+		j = -1;
 		data->lvl[i] = malloc(sizeof(char) * (data->map_set.width + 1));
 		if (!data->lvl[i])
 			return (err_msg("Malloc allocation failed", 1));
-		while (data->map_set.map[ind][j] && data->map_set.map[ind][j] != '\n')
-		{
+		while (data->map_set.map[ind][++j] && data->map_set.map[ind][j] != '\n')
 			data->lvl[i][j] = data->map_set.map[ind][j];
-			j++;
-		}
-		j--;
+		if (data->lvl[i][--j] != '1')
+			p_err("Map is not close");
 		while (++j < data->map_set.width)
 			data->lvl[i][j] = '1';
 		data->lvl[i][j] = '\0';
@@ -58,9 +59,6 @@ void	get_dimension(int map_start_index, t_data *data, char **map)
 	max_width = 0;
 	line_length = 0;
 	i = map_start_index;
-	data->lvl = (char **)malloc(sizeof(char *) * (data->map_set.height + 1));
-	if (!data->lvl)
-		return (err_msg("Malloc allocation failed", 1));
 	while (map[i])
 	{
 		line_length = ft_strlen(map[i]);
@@ -101,5 +99,6 @@ int	create_map(t_data *data, char **map, int i)
 	if (init_lvl(i, data) != 0)
 		return (1);
 	convert_empty_to_wall(data);
+	print_lvl(data);
 	return (0);
 }
