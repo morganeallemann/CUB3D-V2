@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event_player.c	                                    :+:      :+:    :+:   */
+/*   event_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malleman <malleman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: inaranjo <inaranjo <inaranjo@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:45:32 by malleman          #+#    #+#             */
-/*   Updated: 2023/11/22 16:07:11 by malleman         ###   ########.fr       */
+/*   Updated: 2023/12/05 15:16:52 by inaranjo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 int	move_up(t_data *data, double speed)

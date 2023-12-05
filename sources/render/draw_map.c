@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_map.c	                                        :+:      :+:    :+:   */
+/*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malleman <malleman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: inaranjo <inaranjo <inaranjo@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:45:32 by malleman          #+#    #+#             */
-/*   Updated: 2023/11/22 16:07:11 by malleman         ###   ########.fr       */
+/*   Updated: 2023/12/05 15:03:53 by inaranjo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 void	put_img_pxl(t_img *img, int x, int y, int color)

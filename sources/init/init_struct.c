@@ -52,8 +52,6 @@ void	init_img(t_img *img)
 	img->minimap_endian = 0;
 	img->minimap_w = 0;
 	img->minimap_h = 0;
-	img->minimap_y = 0;
-	img->minimap_x = 0;
 	img->block_size = 0;
 }
 
