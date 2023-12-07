@@ -65,7 +65,7 @@ int	event_player(t_data *data)
 	double	speed;
 
 	step = 0;
-	speed = 0.05;
+	speed = 0.1;
 	if (data->player.move_x == 1)
 		step += move_right(data, speed);
 	if (data->player.move_x == -1)

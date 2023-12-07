@@ -13,7 +13,7 @@
 
 int	check_wall(t_data *data, double x, double y)
 {
-	if (data->lvl[(int)x][(int)y] == '1')
+	if (data->lvl[(int)y][(int)x] == '1')
 		return (1);
 	return (0);
 }
@@ -32,8 +32,8 @@ int	check_pos(t_data *data, double x, double y)
 {
 	if (check_wall(data, x, y))
 		return (1);
-	//if (check_map_pos(data, x, y))
-	//	return (1);
+	if (check_map_pos(data, x, y))
+		return (1);
 	return (0);
 }
 

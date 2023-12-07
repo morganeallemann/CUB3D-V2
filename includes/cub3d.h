@@ -25,8 +25,8 @@
 
 /* -- MACROS -- */
 /* Taille de la window */
-# define W_WIDTH  2000
-# define W_HEIGHT 750
+# define W_WIDTH  1028
+# define W_HEIGHT 500
 
 /* Résolution des textures */
 # define TXT_SIZE 64

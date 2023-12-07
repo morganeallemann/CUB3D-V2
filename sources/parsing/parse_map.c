@@ -76,10 +76,7 @@ void	parse_map(char *map_fd, t_data *data)
 	data->map_set.map_fd = map_fd;
 	data->map_set.map = ft_calloc(data->map_set.nb_lines + 1, sizeof(char *));
 	if (!data->map_set.map)
-	{
-		err_msg("Malloc allocation failed", 0);
-		return ;
-	}
+		err_msg("Malloc allocation failed", 1);
 	data->map_set.fd = open(map_fd, O_RDONLY);
 	if (data->map_set.fd == -1)
 		p_err("File copy access failed");

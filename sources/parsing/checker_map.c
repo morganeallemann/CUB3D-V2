@@ -36,24 +36,24 @@ int	checker_elem(t_data *data, char **map)
 
 int	checker_player(t_data *data, char **map)
 {
-	int	i;
-	int	j;
+	int	y;
+	int	x;
 	int	flag;
 
-	i = -1;
+	y = -1;
 	flag = 0;
 	if (data->player.dir == '0')
 		return (1);
-	while (map[++i])
+	while (map[++y])
 	{
-		j = -1;
-		while (map[i][++j])
+		x = -1;
+		while (map[y][++x])
 		{
-			if (ft_strchr("NSEW", map[i][j]))
+			if (ft_strchr("NSEW", map[y][x]))
 			{
-				data->player.pos_x = (double)i + 0.5;
-				data->player.pos_y = (double)j + 0.5;
-				map[i][j] = '0';
+				data->player.pos_x = (double)x + 0.5;
+				data->player.pos_y = (double)y + 0.5;
+				map[y][x] = '0';
 				flag ++;
 			}
 		}

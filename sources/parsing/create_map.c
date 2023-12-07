@@ -20,31 +20,31 @@ void	copy_map(t_data *data, int i, int j)
 	}
 }
 
-int	init_lvl(int ind, t_data *data)
+int	init_lvl(int i, t_data *data)
 {
-	int	i;
-	int	j;
+	int	y;
+	int	x;
 
-	i = -1;
-	data->lvl = (char **)malloc(sizeof(char *) * (data->map_set.height + 1));
+	y = -1;
+	data->lvl = malloc(sizeof(char *) * (data->map_set.height + 1));
 	if (!data->lvl)
 		return (err_msg("Malloc allocation failed", 1));
-	while (++i < data->map_set.height)
+	while (++y < data->map_set.height)
 	{
-		j = -1;
-		data->lvl[i] = malloc(sizeof(char) * (data->map_set.width + 1));
-		if (!data->lvl[i])
+		x = -1;
+		data->lvl[y] = malloc(sizeof(char) * (data->map_set.width + 1));
+		if (!data->lvl[y])
 			return (err_msg("Malloc allocation failed", 1));
-		while (data->map_set.map[ind][++j] && data->map_set.map[ind][j] != '\n')
-			data->lvl[i][j] = data->map_set.map[ind][j];
-		if (data->lvl[i][--j] != '1')
+		while (data->map_set.map[i][++x] && data->map_set.map[i][x] != '\n')
+			data->lvl[y][x] = data->map_set.map[i][x];
+		if (data->lvl[y][--x] != '1')
 			p_err("Map is not close");
-		while (++j < data->map_set.width)
-			data->lvl[i][j] = '1';
-		data->lvl[i][j] = '\0';
-		ind++;
+		while (++x < data->map_set.width)
+			data->lvl[y][x] = '1';
+		data->lvl[y][x] = '\0';
+		i++;
 	}
-	data->lvl[i] = NULL;
+	data->lvl[y] = NULL;
 	return (0);
 }
 
@@ -53,21 +53,22 @@ void	get_dimension(int map_start_index, t_data *data, char **map)
 	int	map_height;
 	int	max_width;
 	int	line_length;
-	int	i;
+	int	y;
 
 	map_height = 0;
 	max_width = 0;
 	line_length = 0;
-	i = map_start_index;
-	while (map[i])
+	y = map_start_index;
+	while (map[y])
 	{
-		line_length = ft_strlen(map[i]);
+		line_length = ft_strlen(map[y]);
 		if (line_length > max_width)
 			max_width = line_length;
 		map_height++;
-		i++;
+		y++;
+		line_length = 0;
 	}
-	data->map_set.end_of_map = i;
+	data->map_set.end_of_map = y;
 	data->map_set.height = map_height;
 	data->map_set.width = max_width;
 }
@@ -77,26 +78,26 @@ void	convert_empty_to_wall(t_data *data)
 	int	x;
 	int	y;
 
-	x = 0;
-	while (data->lvl[x])
+	y = 0;
+	while (data->lvl[y])
 	{
-		y = 0;
-		while (data->lvl[x][y]) 
+		x = 0;
+		while (data->lvl[y][x]) 
 		{
-			if (data->lvl[x][y] == ' ')
-				data->lvl[x][y] = '1';
-			y++;
+			if (data->lvl[y][x] == ' ')
+				data->lvl[y][x] = '1';
+			x++;
 		}
-		x++;
+		y++;
 	}
 }
 
-int	create_map(t_data *data, char **map, int i)
+int	create_map(t_data *data, char **map, int y)
 {
-	get_dimension(i, data, map);
+	get_dimension(y, data, map);
 	printf("Hauteur de la carte : %d\n", data->map_set.height);
 	printf("Largeur de la carte : %d\n", data->map_set.width);
-	if (init_lvl(i, data) != 0)
+	if (init_lvl(y, data) != 0)
 		return (1);
 	convert_empty_to_wall(data);
 	print_lvl(data);

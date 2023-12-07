@@ -69,17 +69,17 @@ int	*get_colors(char *str)
 	return (convert_colors(c_to_convert, colors));
 }
 
-int	get_tex_color(t_textures *textures, char *line, int j)
+int	get_tex_color(t_textures *textures, char *line, int x)
 {
-	if (line[j] == 'C' && !ft_isprint(line[j + 1]) && !textures->ceiling)
+	if (line[x] == 'C' && !ft_isprint(line[x + 1]) && !textures->ceiling)
 	{
-		textures->ceiling = get_colors(line + j + 1);
+		textures->ceiling = get_colors(line + x + 1);
 		if (textures->ceiling == 0)
 			return (err_msg("Invalid ceiling texture color", 1));
 	}
-	else if (line[j] == 'F' && !ft_isprint(line[j + 1]) && !textures->floor)
+	else if (line[x] == 'F' && !ft_isprint(line[x + 1]) && !textures->floor)
 	{
-		textures->floor = get_colors(line + j + 1);
+		textures->floor = get_colors(line + x + 1);
 		if (textures->floor == 0)
 			return (err_msg("Invalid floor textures color", 1));
 	}

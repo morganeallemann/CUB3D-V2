@@ -11,10 +11,10 @@
 /* ************************************************************************** */
 #include "../includes/cub3d.h"
 
-void	init_calc(t_ray *ray, int i, t_player *player)
+void	init_calc(t_ray *ray, int y, t_player *player)
 {
 	init_ray(ray);
-	ray->cam = 2 * i / (double)W_WIDTH - 1;
+	ray->cam = 2 * y / (double)W_WIDTH - 1;
 	ray->dir_x = player->dir_x + player->plan_x * ray->cam; 
 	ray->dir_y = player->dir_y + player->plan_y * ray->cam;
 	ray->delta_x = fabs(1 / ray->dir_x);
@@ -68,7 +68,7 @@ void	dda(t_ray *ray, t_data *data)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (data->lvl[ray->map_x][ray->map_y] > '0')
+		if (data->lvl[ray->map_y][ray->map_x] > '0')
 			hit = 1;
 	}
 	return ;
@@ -97,17 +97,17 @@ void	height_ray(t_ray *ray, t_data *data, t_player *player)
 void	raycasting(t_data *data, t_player *player)
 {
 	t_ray	ray;
-	int		i;
+	int		y;
 
 	ray = data->ray;
-	i = 0;
-	while (i < data->w_width)
+	y = 0;
+	while (y < data->w_width)
 	{
-		init_calc(&ray, i, player);
+		init_calc(&ray, y, player);
 		init_step(&ray, player);
 		dda(&ray, data);
 		height_ray(&ray, data, player);
-		update_tex_pxl(&ray, data, &data->textures, i);
-		i++;
+		update_tex_pxl(&ray, data, &data->textures, y);
+		y++;
 	}
 }
