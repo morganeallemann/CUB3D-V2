@@ -30,6 +30,8 @@ void	init_player(t_player *player)
 	player->dir_y = 0.0;
 	player->plan_x = 0.0;
 	player->plan_y = 0.0;
+	player->fov_angle = 0.0;
+	player->fov_range = 0.0;
 	player->move_on = 0;
 	player->move_x = 0;
 	player->move_y = 0;
@@ -45,6 +47,26 @@ void	init_img(t_img *img)
 	img->endian = 0;
 	img->img_h = 0;
 	img->img_w = 0;
+	img->minimap_img = NULL;
+	img->minimap_addr = NULL;
+	img->minimap_bpp = 0;
+	img->minimap_line_length = 0;
+	img->minimap_endian = 0;
+	img->minimap_w = 0;
+	img->minimap_h = 0;
+	img->block_size = 0;
+}
+
+void init_sprite(t_sprite *spr)
+{
+	spr->path = NULL; 
+	spr->img_spr = NULL;
+	spr->addr_spr = NULL;
+	spr->bpp_spr = 0; 
+	spr->line_length_spr = 0; 
+	spr->endian_spr = 0; 
+	spr->width = 0; 
+	spr->height = 0;
 }
 
 void	init_ray(t_ray *ray)
@@ -77,6 +99,7 @@ void	init_struct(t_data *data)
 	data->lvl = NULL;
 	data->tex = NULL;
 	data->tex_pxl = NULL;
+	init_sprite(&data->spr);
 	init_map(&data->map_set);
 	init_player(&data->player);
 	init_tex_data(&data->textures);

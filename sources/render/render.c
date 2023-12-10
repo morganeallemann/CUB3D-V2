@@ -11,6 +11,12 @@
 /* ************************************************************************** */
 #include "../includes/cub3d.h"
 
+void mini_player(t_data *data, int *player_x, int *player_y)
+{
+    *player_x = (int)(data->player.pos_x * data->img.block_size);
+    *player_y = (int)(data->player.pos_y * data->img.block_size);
+}
+
 static void	render_raycast(t_data *data)
 {
 	init_ray(&data->ray);
@@ -22,7 +28,7 @@ static void	render_raycast(t_data *data)
 void	render_images(t_data *data)
 {
 	render_raycast(data);
-	//FAIRE APPEL A LA MINIMAP;
+	draw_minimap(data);
 }
 
 int	render(t_data *data)
