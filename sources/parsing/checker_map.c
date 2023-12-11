@@ -88,18 +88,38 @@ int	check_order_elem(t_data *data)
 	return (0);
 }
 
+void	convert_empty_to_wall(t_data *data)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (data->lvl[y])
+	{
+		x = 0;
+		while (data->lvl[y][x]) 
+		{
+			if (data->lvl[y][x] == ' ')
+				data->lvl[y][x] = '1';
+			x++;
+		}
+		y++;
+	}
+}
+
 int	checker_map(t_data *data, char **map)
 {
 	if (!data->lvl)
 		return (err_msg("Map missing", 1));
 	if (data->map_set.height < 3 || data->map_set.width < 3)
 		return (err_msg("Invalid map size", 1));
-	if (checker_side(data, map) != 0)
-		return (err_msg("Invalid map side", 1));
-	if (checker_elem(data, map) != 0)
-		return (err_msg("Invalid element on map", 1));
 	if (checker_player(data, map) != 0)
 		return (err_msg("Invalid player direction or too many player", 1));
+	if (checker_side(data, map) != 0)
+		return (err_msg("Map is not closed", 1));
+	convert_empty_to_wall(data);
+	if (checker_elem(data, map) != 0)
+		return (err_msg("Invalid element on map", 1));
 	if (check_order_elem(data) != 0)
 		return (err_msg("Invalid order in map fd", 1));
 	return (0);

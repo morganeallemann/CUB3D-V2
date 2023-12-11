@@ -11,40 +11,48 @@
 /* ************************************************************************** */
 #include "../includes/cub3d.h"
 
-int	checker_start_end(char **map, int i, int j)
+int check_close(t_data *data, int y, int x)
 {
-	while (map[i][j] == ' ' || map[i][j] == '\t'
-	|| map[i][j] == '\r' || map[i][j] == '\v'
-	|| map[i][j] == '\f')
-		j++;
-	while (map[i][j])
-	{
-		if (map[i][j] != '1')
-			return (1);
-		j++;
-	}
-	return (0);
+	int max_len;
+
+	max_len = ft_strlen(data->lvl[y]);
+	if (y == 0 || y == data->map_set.height)
+		return (1);
+	if (x == 0 || x == max_len)
+		return (1);
+	if (data->lvl[y][x + 1] != '1' && data->lvl[y][x + 1] != '0')
+		return (1);
+	if (data->lvl[y][x - 1] != '1' && data->lvl[y][x - 1] != '0')
+		return (1);
+	if (data->lvl[y + 1][x] != '1' && data->lvl[y + 1][x] != '0')
+		return (1);
+	if (data->lvl[y - 1][x] != '1' && data->lvl[y - 1][x] != '0')
+		return (1);
+	else
+		return (0);
 }
 
 int	checker_side(t_data *data, char **map)
 {
-	int	i;
-	int	j;
+	int	x;
+	int	y;
+	int	error;
 
-	i = 1;
-	j = 0;
-	if (checker_start_end(map, 0, 0) != 0)
-		return (1);
-	while (i < data->map_set.height - 1)
+	y = 0;
+	error = 0;
+	while (map[y])
 	{
-		if (map[i][0] != '1')
-			return (1);
-		j = ft_strlen(map[i]) - 1;
-		if (map[i][j] != '1')
-			return (1);
-		i++;
+		x = 0;
+		while (map[y][x])
+		{
+			if (map[y][x] == '0')
+				error += check_close(data, y , x);
+			x++;
+		}
+		y++;
 	}
-	if (checker_start_end(map, i, 0) != 0)
+	if (error != 0)
 		return (1);
-	return (0);
+	else
+		return (0);
 }
