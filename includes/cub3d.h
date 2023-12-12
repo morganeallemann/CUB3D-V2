@@ -32,7 +32,7 @@
 # define TXT_SIZE 64
 
 /* Résolution FOV-mini_map*/
-# define FOV_COLOR 0xFFFFFF
+# define FOV_COLOR 0x000000
 # define MAX_RAY_DISTANCE 20.0 
 # define FAT_RAY 2
 # define NBR_RAYS 30

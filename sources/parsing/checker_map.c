@@ -3,13 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   checker_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malleman <malleman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: inaranjo <inaranjo <inaranjo@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:45:32 by malleman          #+#    #+#             */
-/*   Updated: 2023/11/22 16:07:11 by malleman         ###   ########.fr       */
+/*   Updated: 2023/12/12 15:02:34 by inaranjo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../includes/cub3d.h"
+
 
 int	checker_elem(t_data *data, char **map)
 {
@@ -89,21 +91,23 @@ int	check_order_elem(t_data *data)
 	return (0);
 }
 
-void	convert_empty_to_wall(t_data *data)
+void	convert_empty(t_data *data, char **map)
 {
 	int	x;
 	int	y;
 
 	y = 0;
-	while (data->lvl[y])
+	while (map[y])
 	{
 		x = 0;
-		while (data->lvl[y][x]) 
+		while (map[y][x])
+			x++;
+		while (x < data->map_set.width - 1)
 		{
-			if (data->lvl[y][x] == ' ')
-				data->lvl[y][x] = '1';
+			map[y][x] = '1';
 			x++;
 		}
+		map[y][x] = '\0';
 		y++;
 	}
 }
@@ -114,16 +118,14 @@ int	checker_map(t_data *data, char **map)
 		return (err_msg("Map missing", 1));
 	if (data->map_set.height < 3 || data->map_set.width < 3)
 		return (err_msg("Invalid map size", 1));
-	//convert_empty_to_wall(data);
 	if (checker_elem(data, map) != 0)
 		return (err_msg("Invalid element on map", 1));
 	if (checker_player(data, map) != 0)
 		return (err_msg("Invalid player direction or too many player", 1));
 	if (checker_side(data, map) != 0)
 		return (err_msg("Map is not closed", 1));
-	
-	
 	if (check_order_elem(data) != 0)
 		return (err_msg("Invalid order in map fd", 1));
+	convert_empty(data, data->lvl);
 	return (0);
 }

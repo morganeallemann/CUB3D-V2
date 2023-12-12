@@ -64,6 +64,7 @@ void	get_dimension(int map_start_index, t_data *data, char **map)
 int	create_map(t_data *data, char **map, int y)
 {
 	get_dimension(y, data, map);
+	printf("WIDTH:  %d\n", data->map_set.width);
 	if (init_lvl(y, data) != 0)
 		return (1);
 	print_lvl(data);
