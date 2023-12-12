@@ -144,6 +144,16 @@ typedef struct s_ray
 
 }			t_ray;
 
+typedef struct s_geometry
+{
+    int		x1;
+    int		y1;
+    int		x2; 
+    int		y2; 
+    double	dx;
+    double	dy;
+} t_geometry;
+
 typedef struct s_data
 {
 	void			*mlx;
@@ -158,6 +168,7 @@ typedef struct s_data
 	t_textures		textures;
 	t_img			img;
 	t_ray			ray;
+	t_geometry		geo;
 }			t_data;
 
 /* -- FONCTIONS PROJETS -- */
@@ -204,11 +215,13 @@ void	draw_minimap(t_data *data);
 void	mini_player(t_data *data, int *player_x, int *player_y);
 
 /* Gestion de la FOV (affichage-minimap) */
-void	draw_line(t_data *data, int x0, int y0, int x1, int y1, int color);
-void	draw_fov(t_data *data);
-void	fat_line(t_data *data, int x0, int y0, int x1, int y1, int color, int fat);
-void	cal_sx_sy(int x0, int y0, int x1, int y1, int *sx, int *sy);
-void	cast_ray(t_data *data, int player_x, int player_y, double ray_angle);
+void	init_fov(t_geometry *geo);
+void cal_sx_sy(t_geometry *geo, int *sx, int *sy);
+void draw_line(t_data *data, t_geometry *geo, int color);
+void fat_line(t_data *data, t_geometry *geo, int color, int fat);
+
+void cast_ray(t_data *data, int player_x, int player_y, double ray_angle);
+void draw_fov(t_data *data);
 
 /* Gestion d'erreurs */
 int		err_msg(char *str, int error);

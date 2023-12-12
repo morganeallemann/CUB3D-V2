@@ -90,4 +90,5 @@ void	init_struct(t_data *data)
 	init_tex_data(&data->textures);
 	init_img(&data->img);
 	init_ray(&data->ray);
+	init_fov(&data->geo);
 }

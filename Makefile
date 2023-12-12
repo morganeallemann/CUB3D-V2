@@ -6,7 +6,7 @@
 #    By: inaranjo <inaranjo <inaranjo@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 13:39:48 by malleman          #+#    #+#              #
-#    Updated: 2023/12/12 14:28:13 by inaranjo         ###   ########.fr        #
+#    Updated: 2023/12/12 16:29:12 by inaranjo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRCS		= 	main.c \
 				events/player_rot.c \
 				render/draw_map.c render/raycasting.c render/render.c \
 				render/tex_management.c render/draw_minimap.c render/draw_fov.c \
-				render/draw_minimap2.c \
+				render/draw_minimap2.c render/init_fov.c\
 
 SRC_DIR 	= 	$(addprefix sources/, $(SRCS))
 #--------------------------	VARIABLES -----------------------------------------#
