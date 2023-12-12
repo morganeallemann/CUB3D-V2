@@ -41,13 +41,11 @@ void	get_dimension(int map_start_index, t_data *data, char **map)
 	int	max_width;
 	int	line_length;
 	int	y;
-	int	x;
 
 	map_height = 0;
 	max_width = 0;
 	line_length = 0;
 	y = map_start_index;
-	x = 0;
 	while (map[y] && map[y][0] != '\n')
 	{
 		line_length = ft_strlen(map[y]);

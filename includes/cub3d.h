@@ -31,6 +31,12 @@
 /* Résolution des textures */
 # define TXT_SIZE 64
 
+/* Résolution FOV-mini_map*/
+# define FOV_COLOR 0xFFFFFF
+# define MAX_RAY_DISTANCE 20.0 
+# define FAT_RAY 2
+# define NBR_RAYS 30
+
 /* Touches clavier */
 # define L_KEY 123
 # define R_KEY 124
@@ -62,6 +68,14 @@ typedef struct s_img
 	int		endian;
 	int		img_h;
 	int		img_w;
+	void	*minimap_img;
+    char	*minimap_addr;
+    int		minimap_bpp;
+    int		minimap_line_length;
+    int		minimap_endian;
+	int		minimap_w;
+	int		minimap_h;
+	int		block_size;
 }			t_img;
 
 typedef struct s_textures
@@ -179,6 +193,21 @@ void	render_images(t_data *data);
 void	raycasting(t_data *data, t_player *player);
 void	update_tex_pxl(t_ray *ray, t_data *data, t_textures *txt, int i);
 void	draw_map(t_data *data);
+
+/* Gestion de la minimap */
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	draw_square(t_data *data, int draw_x, int draw_y, int color);
+void	draw_player(t_data *data);
+void	resize_block(t_data *data);
+void	draw_minimap(t_data *data);
+void	mini_player(t_data *data, int *player_x, int *player_y);
+
+/* Gestion de la FOV (affichage-minimap) */
+void	draw_line(t_data *data, int x0, int y0, int x1, int y1, int color);
+void	draw_fov(t_data *data);
+void	fat_line(t_data *data, int x0, int y0, int x1, int y1, int color, int fat);
+void	cal_sx_sy(int x0, int y0, int x1, int y1, int *sx, int *sy);
+void	cast_ray(t_data *data, int player_x, int player_y, double ray_angle);
 
 /* Gestion d'erreurs */
 int		err_msg(char *str, int error);
