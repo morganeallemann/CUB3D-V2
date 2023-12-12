@@ -23,7 +23,8 @@ int	checker_elem(t_data *data, char **map)
 		j = 0;
 		while (map[i][j] != '\n' && (map[i][j]))
 		{
-			if (!ft_strchr("10NSEW", map[i][j]))
+			if (!ft_strchr("10NSEW", map[i][j]) && map[i][j] != ' ' &&
+				map[i][j] != '\t')
 				return (1);
 			if (ft_strchr("NSEW", map[i][j]) && data->player.dir == '0')
 				data->player.dir = map[i][j];
@@ -113,13 +114,15 @@ int	checker_map(t_data *data, char **map)
 		return (err_msg("Map missing", 1));
 	if (data->map_set.height < 3 || data->map_set.width < 3)
 		return (err_msg("Invalid map size", 1));
+	//convert_empty_to_wall(data);
+	if (checker_elem(data, map) != 0)
+		return (err_msg("Invalid element on map", 1));
 	if (checker_player(data, map) != 0)
 		return (err_msg("Invalid player direction or too many player", 1));
 	if (checker_side(data, map) != 0)
 		return (err_msg("Map is not closed", 1));
-	convert_empty_to_wall(data);
-	if (checker_elem(data, map) != 0)
-		return (err_msg("Invalid element on map", 1));
+	
+	
 	if (check_order_elem(data) != 0)
 		return (err_msg("Invalid order in map fd", 1));
 	return (0);
