@@ -199,6 +199,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	draw_square(t_data *data, int draw_x, int draw_y, int color);
 void	draw_player(t_data *data);
 void	resize_block(t_data *data);
+void	set_minimap(t_data *data);
 void	draw_minimap(t_data *data);
 void	mini_player(t_data *data, int *player_x, int *player_y);
 

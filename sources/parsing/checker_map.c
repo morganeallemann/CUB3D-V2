@@ -12,7 +12,6 @@
 
 #include "../includes/cub3d.h"
 
-
 int	checker_elem(t_data *data, char **map)
 {
 	int	i;

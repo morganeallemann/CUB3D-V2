@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 #include "../includes/cub3d.h"
 
-int check_close(t_data *data, int y, int x)
+int	check_close(t_data *data, int y, int x)
 {
-	int max_len;
+	int	max_len;
 
 	max_len = ft_strlen(data->lvl[y]);
 	if (y == 0 || y == data->map_set.height)
@@ -46,7 +46,7 @@ int	checker_side(t_data *data, char **map)
 		while (map[y][x])
 		{
 			if (map[y][x] == '0')
-				error += check_close(data, y , x);
+				error += check_close(data, y, x);
 			x++;
 		}
 		y++;

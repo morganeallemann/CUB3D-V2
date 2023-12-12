@@ -24,6 +24,7 @@ SRCS		= 	main.c \
 				events/player_rot.c \
 				render/draw_map.c render/raycasting.c render/render.c \
 				render/tex_management.c render/draw_minimap.c render/draw_fov.c \
+				render/draw_minimap2.c \
 
 SRC_DIR 	= 	$(addprefix sources/, $(SRCS))
 #--------------------------	VARIABLES -----------------------------------------#

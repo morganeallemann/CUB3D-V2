@@ -51,10 +51,9 @@ void	init_east_west(t_data *data)
 
 void	init_player_dir(t_data *data)
 {
-    if (data->player.dir == 'N' || data->player.dir == 'S')
-        init_north_south(data);
-    else if (data->player.dir == 'E' || data->player.dir == 'W')
-        init_east_west(data);
-    return ;
+	if (data->player.dir == 'N' || data->player.dir == 'S')
+		init_north_south(data);
+	else if (data->player.dir == 'E' || data->player.dir == 'W')
+		init_east_west(data);
+	return ;
 }
-
